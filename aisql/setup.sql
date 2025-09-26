@@ -23,6 +23,6 @@ CREATE TABLE Cards (
   title     TEXT    NOT NULL,
   effect    TEXT    NOT NULL,
   cost      INTEGER NOT NULL,
-  player_id INTEGER,
+  player_id INTEGER,  -- NULL if still in deck and not in a players hand.
   FOREIGN KEY (player_id) REFERENCES Player(player_id)
 );
