@@ -76,7 +76,10 @@ questions = [
   "Which player rules the most clearings?",
   "Which player has the largest army?",
   "Who has the most expensive card?",
-  "Is the Favor of the Mice card still in the deck, or does a player have it?"
+  "Is the Favor of the Mice card still in the deck, or does a player have it?",
+  "What is player one's favorite card?",
+  "Who do you predict is going to win the game?",
+  "Who do you predict is going to lose the hardest?"
 ]
 
 def sanitizeForJustSql(value):
@@ -109,9 +112,9 @@ for strategy in strategies:
             queryRawResponse = str(runSql(sqlSyntaxResponse))
             print("Query Raw Response:")
             print(queryRawResponse)
-            friendlyResultsPrompt = "I asked a question \"" + question +"\" and the response was \""+queryRawResponse+"\" Please, just give a concise response in a more friendly way? Please do not give any other suggests or chatter."
-            # betterFriendlyResultsPrompt = "I asked a question: \"" + question +"\" and I queried this database " + setupSqlScript + " with this query " + sqlSyntaxResponse + ". The query returned the results data: \""+queryRawResponse+"\". Could you concisely answer my question using the results data?"
-            friendlyResponse = getChatGptResponse(friendlyResultsPrompt)
+            #friendlyResultsPrompt = "I asked a question \"" + question +"\" and the response was \""+queryRawResponse+"\" Please, just give a concise response in a more friendly way? Please do not give any other suggests or chatter."
+            betterFriendlyResultsPrompt = "I asked a question: \"" + question +"\" and I queried this database " + setupSqlScript + " with this query " + sqlSyntaxResponse + ". The query returned the results data: \""+queryRawResponse+"\". Could you concisely answer my question using the results data?"
+            friendlyResponse = getChatGptResponse(betterFriendlyResultsPrompt)
             print("Friendly Response:")
             print(friendlyResponse)
         except Exception as err:
